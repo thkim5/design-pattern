@@ -2,9 +2,9 @@ package chapter2
 
 class WeatherData: Subject {
     private val observers: ArrayList<Observer> = ArrayList()
-    private var temperature: Float = 0.0f
-    private var humidity: Float = 0.0f
-    private var pressure: Float = 0.0f
+    var temperature: Float = 0.0f
+    var humidity: Float = 0.0f
+    var pressure: Float = 0.0f
 
     override fun registerObserver(observer: Observer) {
         observers.add(observer)
@@ -15,7 +15,7 @@ class WeatherData: Subject {
     }
 
     override fun notifyObservers() {
-        observers.forEach { it.update(temperature, humidity, pressure) }
+        observers.forEach { it.update() }
     }
 
     private fun measurementsChanged() {
